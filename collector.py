@@ -48,6 +48,16 @@ if not os.path.exists(new_dir):
 
 if not os.path.isfile("config.json"):
     print("\033[33m" + "[WARN] No config file found in working directory. Will download the default")
+    confurl = "https://github.com/CallMeSteve297/engineercollect/raw/main/config.json"
+    confresponse = requests.get(confurl)
+    if confresponse.status_code == 200:
+        # File found, proceed with download
+        with open("config.json", "wb") as f:
+            f.write(confresponse.content)
+            print("\033[32m" + "[SUCCESS] Default Config File Retrieved")
+    else:
+        # File not found or other error
+        print("Error:", confresponse.status_code)
 
 with open('config.json', 'r') as f:
     jsoncmd = json.load(f)    
