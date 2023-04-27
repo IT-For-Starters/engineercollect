@@ -1,6 +1,8 @@
 # Engineer Collector
 There seem to be multiple collection programs and scripts that engineers can use to gather information about a client's machine. However, these are either unnecessarily complicated, hidden, fixed (can't be customised) or cost human money. This is just my way of gathering lots of info of a client machine in a quick and easy program that engineers can run themselves, or that they can distribute to end users to run and send the results of.
 
+**:exclamation: This is still in alpha, please use at own risk**
+
 ## How does this work?
 It's nice and simple:
 - The program will run a number of powershell commands that you specify
@@ -17,8 +19,3 @@ It's nice and simple:
 ### Tell me more about the JSON
 The ```config.json``` file is used to store all of the commands that the program will run.
 Commands are filtered into "categories". Each category will get its own folder in the ZIP file, containing the outputs of all commands in their own text files.
-
-## Prerequisites
-To run this application, you will need:
-- A web server to host the app
-- 2 CSV files/data with UserPrincipalName and ProxyAddresses columns
