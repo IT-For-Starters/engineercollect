@@ -10,9 +10,13 @@ It's nice and simple:
 - Once all commands are ran, all outputs are neatly put into a single ZIP file, which is stored in the same directory as the program.
 
 ## Features
-:white_check_mark: All calculations are local only, so no sharing data with servers  
-:white_check_mark: Bi-Directional comparisons mean that you can check for missing addresses on both sides  
-:white_check_mark: Specify either a semi-colon or plus symbol as your delimiter for proxy addresses  
+:white_check_mark: All commands are ran locally, and no outputs are sent to anyone  
+:white_check_mark: The commands to run are entirely customisable  
+:white_check_mark: Specify whether you want to output the result as default, table or list
+
+### Tell me more about the JSON
+The ```config.json``` file is used to store all of the commands that the program will run.
+Commands are filtered into "categories". Each category will get its own folder in the ZIP file, containing the outputs of all commands in their own text files.
 
 ## Prerequisites
 To run this application, you will need:
