@@ -1,0 +1,132 @@
+{
+    "version": 1.6,
+    "categories" : [
+        {
+            "name" : "System Information",
+            "cmds" : [
+                {
+                    "command" : "Get-CimInstance win32_processor | select Name, Manufacturer, MaxClockSpeed, NumberOfCores",
+                    "friendly" : "CPU Information",
+                    "format" : "list"
+                },
+                {
+                    "command" : "Get-CimInstance win32_physicalmemory | select BankLabel, Manufacturer, PartNumber, SerialNumber, Capacity, Speed, FormFactor",
+                    "friendly" : "RAM Information",
+                    "format" : "table"
+                },
+                {
+                    "command" : "Get-PhysicalDisk",
+                    "friendly" : "Disk Information",
+                    "format" : "list"
+                },
+                {
+                    "command" : "Get-WmiObject win32_bios; Get-WmiObject win32_computersystem",
+                    "friendly" : "Hardware Information",
+                    "format" : "none"
+                },
+                {
+                    "command" : "dsregcmd /status",
+                    "friendly" : "Domain Status",
+                    "format" : "none"
+                },
+                {
+                    "command" : "[Environment]::GetEnvironmentVariables([EnvironmentVariableTarget]::Machine)",
+                    "friendly" : "Environment Vars - System",
+                    "format" : "none"
+                },
+                {
+                    "command" : "[Environment]::GetEnvironmentVariables([EnvironmentVariableTarget]::User)",
+                    "friendly" : "Environment Vars - User",
+                    "format" : "none"
+                }
+            ]
+        },
+        {
+            "name" : "Networking",
+            "cmds" : [
+                {
+                    "command" : "Get-NetAdapter",
+                    "friendly" : "Network Adapters",
+                    "format" : "list"
+                },
+                {
+                    "command" : "Get-NetIPAddress",
+                    "friendly" : "Network Addresses",
+                    "format" : "none"
+                },
+                {
+                    "command" : "ipconfig /all",
+                    "friendly" : "IP Config",
+                    "format" : "none"
+                },
+                {
+                    "command" : "route print",
+                    "friendly" : "Routing Table",
+                    "format" : "none"
+                },
+                {
+                    "command" : "Test-Connection 8.8.8.8",
+                    "friendly" : "Connection Test - Google DNS",
+                    "format" : "none"
+                },
+                {
+                    "command" : "$ProgressPreference = 'SilentlyContinue'; Test-NetConnection -ComputerName (Get-NetRoute | where DestinationPrefix -eq '0.0.0.0/0').NextHop",
+                    "friendly" : "Connection Test - Default Gateway",
+                    "format" : "none"
+                }
+            ]
+        },
+        {
+            "name" : "Software",
+            "cmds" : [
+                {
+                    "command" : "Get-WmiObject -Class Win32_Product | select Name, Vendor, Version, InstallDate",
+                    "friendly" : "Win32 Apps",
+                    "format" : "none"
+                },
+                {
+                    "command" : "Get-AppxPackage | select Name, PackageFullName, Publisher, Version",
+                    "friendly" : "Microsoft Store Apps",
+                    "format" : "none"
+                },
+                {
+                    "command" : "Get-ItemProperty HKLM:\\Software\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\* | select DisplayName, Publisher, InstallDate, DisplayVersion, HelpLink",
+                    "friendly" : "Apps from Registry",
+                    "format" : "none"
+                },
+                {
+                    "command" : "Get-Process | select Name, Id, MainWindowTitle, Responding",
+                    "friendly" : "Running Apps",
+                    "format" : "none"
+                }
+            ]
+        },
+        {
+            "name" : "Services and Processes",
+            "cmds" : [
+                {
+                    "command" : "Get-Service | select DisplayName, Name, Status",
+                    "friendly" : "Service Information",
+                    "format" : "none"
+                },
+                {
+                    "command" : "Get-Process",
+                    "friendly" : "Process Information",
+                    "format" : "none"
+                }
+            ]
+        },
+        {
+            "name" : "Windows Defender",
+            "cmds" : [
+                {
+                    "command" : "Get-MpComputerStatus",
+                    "friendly" : "Defender Computer Status",
+                    "format" : "none"
+                }
+            ]
+        }
+    ]
+    
+    
+}
