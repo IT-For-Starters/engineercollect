@@ -23,9 +23,22 @@ class collectCommand:
 
     
     
-    def exe(self):
-        print("\033[36m" + "[INFO] Running command: '"+self.cmd+"'")
+    def exePS(self):
+        print("\033[36m" + "[INFO][PS] Running command: '"+self.cmd+"'")
         command_output = subprocess.check_output(['powershell', '-Command', self.cmd, self.format]).decode('utf-8')
+        outputlines = command_output.split("\n")
+        finaloutput = ""
+        for line in outputlines:
+            finaloutput += line
+        file_name = self.friendly + '.txt'
+        file_path = os.path.join(self.filedir, file_name)
+        with open(file_path, 'w') as file:
+            file.write(finaloutput)
+        print("\033[32m" + "[SUCCESS] Command output saved as '"+self.friendly+".txt'")
+
+    def exeCMD(self):
+        print("\033[36m" + "[INFO][CMD] Running command: '"+self.cmd+"'")
+        command_output = subprocess.check_output(self.cmd, shell=True).decode('utf-8')
         outputlines = command_output.split("\n")
         finaloutput = ""
         for line in outputlines:
@@ -75,8 +88,14 @@ for category in jsoncmd['categories']:
     os.mkdir(newcatdir)
 
     for cmd in category["cmds"]:
-        cmd = collectCommand(cmd["command"], newcatdir, cmd["friendly"], cmd["format"])
-        cmd.exe()
+        if cmd["type"] == "cmd":
+            cmd = collectCommand(cmd["command"], newcatdir, cmd["friendly"], "none")
+            cmd.exeCMD()
+        elif cmd['type'] == "ps":
+            cmd = collectCommand(cmd["command"], newcatdir, cmd["friendly"], cmd["format"])
+            cmd.exePS()
+        else:
+            print("\033[91m" + "[ERROR] No Type Specified for Command", cmd["command"])
 
 
 
