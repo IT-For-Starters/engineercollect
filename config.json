@@ -65,9 +65,8 @@
                 },
                 {
                     "command" : "ipconfig /all",
-                    "type" : "ps",
-                    "friendly" : "IP Config",
-                    "format" : "none"
+                    "type" : "cmd",
+                    "friendly" : "IP Config"
                 },
                 {
                     "command" : "route print",
