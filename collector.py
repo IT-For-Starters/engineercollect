@@ -55,12 +55,15 @@ if not os.path.isfile("config.json"):
         with open("config.json", "wb") as f:
             f.write(confresponse.content)
             print("\033[32m" + "[SUCCESS] Default Config File Retrieved")
+        with open('config.json', 'r') as f:
+            jsoncmd = json.load(f)
     else:
         # File not found or other error
         print("Error:", confresponse.status_code)
+else:
+    with open('config.json', 'r') as f:
+        jsoncmd = json.load(f)
 
-with open('config.json', 'r') as f:
-    jsoncmd = json.load(f)    
 
 
 
