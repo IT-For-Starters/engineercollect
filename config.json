@@ -70,7 +70,7 @@
                     "format" : "none"
                 },
                 {
-                    "command" : "$ProgressPreference = 'SilentlyContinue'; Test-NetConnection -ComputerName (Get-NetRoute | where DestinationPrefix -eq '0.0.0.0/0').NextHop",
+                    "command" : "$ProgressPreference = 'SilentlyContinue'; Test-NetConnection -ComputerName (Get-NetRoute | Where-Object DestinationPrefix -eq '0.0.0.0/0' | Select-Object -First 1).NextHop",
                     "friendly" : "Connection Test - Default Gateway",
                     "format" : "none"
                 }
