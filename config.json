@@ -6,36 +6,43 @@
             "cmds" : [
                 {
                     "command" : "Get-CimInstance win32_processor | select Name, Manufacturer, MaxClockSpeed, NumberOfCores",
+                    "type" : "ps",
                     "friendly" : "CPU Information",
                     "format" : "list"
                 },
                 {
                     "command" : "Get-CimInstance win32_physicalmemory | select BankLabel, Manufacturer, PartNumber, SerialNumber, Capacity, Speed, FormFactor",
+                    "type" : "ps",
                     "friendly" : "RAM Information",
                     "format" : "table"
                 },
                 {
                     "command" : "Get-PhysicalDisk",
+                    "type" : "ps",
                     "friendly" : "Disk Information",
                     "format" : "list"
                 },
                 {
                     "command" : "Get-WmiObject win32_bios; Get-WmiObject win32_computersystem",
+                    "type" : "ps",
                     "friendly" : "Hardware Information",
                     "format" : "none"
                 },
                 {
                     "command" : "dsregcmd /status",
+                    "type" : "ps",
                     "friendly" : "Domain Status",
                     "format" : "none"
                 },
                 {
                     "command" : "[Environment]::GetEnvironmentVariables([EnvironmentVariableTarget]::Machine)",
+                    "type" : "ps",
                     "friendly" : "Environment Vars - System",
                     "format" : "none"
                 },
                 {
                     "command" : "[Environment]::GetEnvironmentVariables([EnvironmentVariableTarget]::User)",
+                    "type" : "ps",
                     "friendly" : "Environment Vars - User",
                     "format" : "none"
                 }
@@ -46,31 +53,36 @@
             "cmds" : [
                 {
                     "command" : "Get-NetAdapter",
+                    "type" : "ps",
                     "friendly" : "Network Adapters",
                     "format" : "list"
                 },
                 {
                     "command" : "Get-NetIPAddress",
+                    "type" : "ps",
                     "friendly" : "Network Addresses",
                     "format" : "none"
                 },
                 {
                     "command" : "ipconfig /all",
-                    "friendly" : "IP Config",
-                    "format" : "none"
+                    "type" : "cmd",
+                    "friendly" : "IP Config"
                 },
                 {
                     "command" : "route print",
+                    "type" : "ps",
                     "friendly" : "Routing Table",
                     "format" : "none"
                 },
                 {
                     "command" : "Test-Connection 8.8.8.8",
+                    "type" : "ps",
                     "friendly" : "Connection Test - Google DNS",
                     "format" : "none"
                 },
                 {
                     "command" : "$ProgressPreference = 'SilentlyContinue'; Test-NetConnection -ComputerName (Get-NetRoute | Where-Object DestinationPrefix -eq '0.0.0.0/0' | Select-Object -First 1).NextHop",
+                    "type" : "ps",
                     "friendly" : "Connection Test - Default Gateway",
                     "format" : "none"
                 }
@@ -81,21 +93,25 @@
             "cmds" : [
                 {
                     "command" : "Get-WmiObject -Class Win32_Product | select Name, Vendor, Version, InstallDate",
+                    "type" : "ps",
                     "friendly" : "Win32 Apps",
                     "format" : "none"
                 },
                 {
                     "command" : "Get-AppxPackage | select Name, PackageFullName, Publisher, Version",
+                    "type" : "ps",
                     "friendly" : "Microsoft Store Apps",
                     "format" : "none"
                 },
                 {
                     "command" : "Get-ItemProperty HKLM:\\Software\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\* | select DisplayName, Publisher, InstallDate, DisplayVersion, HelpLink",
+                    "type" : "ps",
                     "friendly" : "Apps from Registry",
                     "format" : "none"
                 },
                 {
                     "command" : "Get-Process | select Name, Id, MainWindowTitle, Responding",
+                    "type" : "ps",
                     "friendly" : "Running Apps",
                     "format" : "none"
                 }
@@ -106,11 +122,13 @@
             "cmds" : [
                 {
                     "command" : "Get-Service | select DisplayName, Name, Status",
+                    "type" : "ps",
                     "friendly" : "Service Information",
                     "format" : "none"
                 },
                 {
                     "command" : "Get-Process",
+                    "type" : "ps",
                     "friendly" : "Process Information",
                     "format" : "none"
                 }
@@ -121,6 +139,7 @@
             "cmds" : [
                 {
                     "command" : "Get-MpComputerStatus",
+                    "type" : "ps",
                     "friendly" : "Defender Computer Status",
                     "format" : "none"
                 }
