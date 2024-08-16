@@ -25,7 +25,7 @@ class collectCommand:
     
     def exePS(self):
         print("\033[36m" + "[INFO][PS] Running command: '"+self.cmd+"'")
-        command_output = subprocess.check_output(['powershell', '-Command', self.cmd, self.format]).decode('utf-8')
+        command_output = subprocess.check_output(['powershell', '-Command', self.cmd, self.format]).decode('utf-8', errors='replace')
         outputlines = command_output.split("\n")
         finaloutput = ""
         for line in outputlines:
@@ -38,7 +38,7 @@ class collectCommand:
 
     def exeCMD(self):
         print("\033[36m" + "[INFO][CMD] Running command: '"+self.cmd+"'")
-        command_output = subprocess.check_output(self.cmd, shell=True).decode('utf-8')
+        command_output = subprocess.check_output(self.cmd, shell=True).decode('utf-8', errors='replace')
         outputlines = command_output.split("\n")
         finaloutput = ""
         for line in outputlines:
