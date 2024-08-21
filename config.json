@@ -45,6 +45,18 @@
                     "type" : "ps",
                     "friendly" : "Environment Vars - User",
                     "format" : "none"
+                },
+                {
+                    "command" : "Get-ItemProperty -Path 'HKLM:\\Software\\Microsoft\\Windows NT\\CurrentVersion\\' | Select-Object ProductName, EditionID, ReleaseId",
+                    "type" : "ps",
+                    "friendly" : "Windows Edition Information",
+                    "format" : "none"
+                },
+                {
+                    "command" : "Get-WmiObject -Query \"SELECT Name, Description, PartialProductKey, LicenseStatus FROM SoftwareLicensingProduct WHERE LicenseStatus='1'\"",
+                    "type" : "ps",
+                    "friendly" : "Windows Licensing Information",
+                    "format" : "none"
                 }
             ]
         },
