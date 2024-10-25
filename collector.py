@@ -32,7 +32,7 @@ class collectCommand:
             for line in outputlines:
                 finaloutput += line
         except Exception as e:
-            print("\033[31m" + f"An unexpected error occurred: {e}")
+            print("\033[31m" + f"[ERROR] An unexpected error occurred: {e}")
             finaloutput = f"{e}"
         
         file_name = self.friendly + '.txt'
@@ -50,7 +50,7 @@ class collectCommand:
             for line in outputlines:
                 finaloutput += line
         except Exception as e:
-            print("\033[31m" + f"An unexpected error occurred: {e}")
+            print("\033[31m" + f"[ERROR] An unexpected error occurred: {e}")
             finaloutput = f"{e}"
         file_name = self.friendly + '.txt'
         file_path = os.path.join(self.filedir, file_name)
