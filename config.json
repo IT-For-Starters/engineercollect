@@ -125,7 +125,7 @@
                     "command" : "Get-Process | select Name, Id, MainWindowTitle, Responding",
                     "type" : "ps",
                     "friendly" : "Running Apps",
-                    "format" : "none"
+                    "format" : "table"
                 }
             ]
         },
